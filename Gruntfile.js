@@ -15,8 +15,7 @@ module.exports = function(grunt) {
 
       es5: {
         files: {
-        	"build/es5/lib/index.js": "lib/index.js",
-          "build/es5/lib/Automator.js": "lib/Automator.js"
+        	"build/es5/lib/index.js": "lib/index.js"
         }
       }
     },
@@ -95,6 +94,7 @@ module.exports = function(grunt) {
   //aliases
   grunt.registerTask("buildes5", ["travis-lint", "jshint", "clean:es5", "babel:es5", "copy:nodejs"]);
   grunt.registerTask("es5", ["buildes5", "mochaTest:es5"]);
+  grunt.registerTask("test", ["mochaTest:es5"]);
 
   // Default task
   grunt.registerTask("default", []);

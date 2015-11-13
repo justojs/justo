@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = justo;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj["default"] = obj; return newObj; } }
 
 var _justoLogger = require("justo-logger");
@@ -17,9 +15,7 @@ var _justoReporter = require("justo-reporter");
 
 var reporter = _interopRequireWildcard(_justoReporter);
 
-var _Automator = require("./Automator");
-
-var _Automator2 = _interopRequireDefault(_Automator);
+var _justoRunner = require("justo-runner");
 
 var Reporters = reporter.Reporters;
 var ColoredConsoleReporter = reporter.reporter.ColoredConsoleReporter;
@@ -71,7 +67,7 @@ function automator(config) {
   reporters = new Reporters();
   reporters.add(new ColoredConsoleReporter());
 
-  runner = new _Automator2["default"]({ loggers: loggers, reporters: reporters });
+  runner = new _justoRunner.Automator({ loggers: loggers, reporters: reporters });
 
   args = config.arguments;
 
