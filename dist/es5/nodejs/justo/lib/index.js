@@ -26,37 +26,50 @@ var ColoredConsoleLogger = logger.logger.ColoredConsoleLogger;
 var runner;
 var args;
 
-function justo(type, config) {
-  if (type == "automator") return automator(config);
+function justo(type, config, props) {
+  if (type == "automator") automator(config);
+
+  Object.defineProperty(justo, "task", {
+    get: function get() {
+      return runner.task;
+    },
+    enumerable: true
+  });
+
+  Object.defineProperty(justo, "macro", {
+    get: function get() {
+      return runner.macro;
+    },
+    enumerable: true
+  });
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = Object.keys(props)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var key = _step.value;
+
+      Object.defineProperty(justo, key, { value: props[key], enumerable: true });
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"]) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return runner;
 }
-
-Object.defineProperty(justo, "task", {
-  get: function get() {
-    return runner.task;
-  },
-  enumerable: true
-});
-
-Object.defineProperty(justo, "macro", {
-  get: function get() {
-    return runner.macro;
-  },
-  enumerable: true
-});
-
-Object.defineProperty(justo, "args", {
-  get: function get() {
-    return args;
-  },
-  enumerable: true
-});
-
-Object.defineProperty(justo, "arg", {
-  get: function get() {
-    return args[0];
-  },
-  enumerable: true
-});
 
 function automator(config) {
   var loggers, reporters;
@@ -68,9 +81,5 @@ function automator(config) {
   reporters.add(new ColoredConsoleReporter());
 
   runner = new _justoRunner.Automator({ loggers: loggers, reporters: reporters });
-
-  args = config.arguments;
-
-  return runner;
 }
 module.exports = exports["default"];
