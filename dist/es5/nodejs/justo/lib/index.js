@@ -43,6 +43,13 @@ function justo(type, config, props) {
     enumerable: true
   });
 
+  Object.defineProperty(justo, "workflow", {
+    get: function get() {
+      return runner.workflow;
+    },
+    enumerable: true
+  });
+
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
