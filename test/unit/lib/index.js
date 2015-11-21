@@ -12,7 +12,7 @@ describe("index", function() {
     runner = justo("automator", {loggers: [], reporters: []}, {register});
 
     runner.must.be.instanceOf(Automator);
-    justo.task.must.be.instanceOf(Function);
+    justo.simple.must.be.instanceOf(Function);
     justo.macro.must.be.instanceOf(Function);
     justo.register.must.be.instanceOf(Function);
   });

@@ -29,9 +29,9 @@ var args;
 function justo(type, config, props) {
   if (type == "automator") automator(config);
 
-  Object.defineProperty(justo, "task", {
+  Object.defineProperty(justo, "simple", {
     get: function get() {
-      return runner.task;
+      return runner.simple;
     },
     enumerable: true
   });
