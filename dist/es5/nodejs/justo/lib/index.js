@@ -15,7 +15,7 @@ var _justoReporter = require("justo-reporter");
 
 var reporter = _interopRequireWildcard(_justoReporter);
 
-var _justoRunner = require("justo-runner");
+var _justoAutomator = require("justo-automator");
 
 var Reporters = reporter.Reporters;
 var ColoredConsoleReporter = reporter.reporter.ColoredConsoleReporter;
@@ -87,6 +87,6 @@ function automator(config) {
   reporters = new Reporters();
   reporters.add(new ColoredConsoleReporter());
 
-  runner = new _justoRunner.Automator({ loggers: loggers, reporters: reporters });
+  runner = new _justoAutomator.Automator({ loggers: loggers, reporters: reporters });
 }
 module.exports = exports["default"];
