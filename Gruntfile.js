@@ -15,7 +15,9 @@ module.exports = function(grunt) {
 
       es5: {
         files: {
-        	"build/es5/lib/index.js": "lib/index.js"
+        	"build/es5/lib/index.js": "lib/index.js",
+          "build/es5/lib/automator.js": "lib/automator.js",
+          "build/es5/lib/tester.js": "lib/tester.js"
         }
       }
     },

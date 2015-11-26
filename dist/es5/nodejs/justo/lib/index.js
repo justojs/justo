@@ -3,52 +3,36 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = justo;
+exports["default"] = publish;
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj["default"] = obj; return newObj; } }
+var loggers, reporters;
+var justo = publish;
+Object.defineProperty(justo, "publish", { value: publish });
 
-var _justoLogger = require("justo-logger");
+function publish(type, config, props) {
+  var log = require("justo-logger");
+  var rep = require("justo-reporter");
+  var runner;
 
-var logger = _interopRequireWildcard(_justoLogger);
+  if (!loggers) {
+    loggers = new log.Loggers();
+    loggers.add(new log.logger.ColoredConsoleLogger());
+  }
 
-var _justoReporter = require("justo-reporter");
+  if (!reporters) {
+    reporters = new rep.Reporters();
+    reporters.add(new rep.reporter.ColoredConsoleReporter());
+  }
 
-var reporter = _interopRequireWildcard(_justoReporter);
+  config = Object.assign({}, config, { loggers: loggers, reporters: reporters });
 
-var _justoAutomator = require("justo-automator");
-
-var Reporters = reporter.Reporters;
-var ColoredConsoleReporter = reporter.reporter.ColoredConsoleReporter;
-
-var Loggers = logger.Loggers;
-var ColoredConsoleLogger = logger.logger.ColoredConsoleLogger;
-
-var runner;
-var args;
-
-function justo(type, config, props) {
-  if (type == "automator") automator(config);
-
-  Object.defineProperty(justo, "simple", {
-    get: function get() {
-      return runner.simple;
-    },
-    enumerable: true
-  });
-
-  Object.defineProperty(justo, "macro", {
-    get: function get() {
-      return runner.macro;
-    },
-    enumerable: true
-  });
-
-  Object.defineProperty(justo, "workflow", {
-    get: function get() {
-      return runner.workflow;
-    },
-    enumerable: true
-  });
+  if (type == "automator") {
+    runner = require("./automator").publish(config, justo);
+  } else if (type == "tester") {
+    runner = require("./tester").publish(config, justo);
+  } else {
+    throw new Error("Invalid runner type: " + type + ".");
+  }
 
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
@@ -76,17 +60,5 @@ function justo(type, config, props) {
   }
 
   return runner;
-}
-
-function automator(config) {
-  var loggers, reporters;
-
-  loggers = new Loggers();
-  loggers.add(new ColoredConsoleLogger());
-
-  reporters = new Reporters();
-  reporters.add(new ColoredConsoleReporter());
-
-  runner = new _justoAutomator.Automator({ loggers: loggers, reporters: reporters });
 }
 module.exports = exports["default"];

@@ -1,6 +1,6 @@
 {
   "name": "justo",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
@@ -38,7 +38,8 @@
     "justo-logger": "*",
     "justo-reporter": "*",
     "justo-result": "*",
-    "justo-runner": "*"
+    "justo-runner": "*",
+    "justo-tester": "*"
   },
   "peerDependencies": {},
   "devDependencies": {
