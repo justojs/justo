@@ -19,13 +19,18 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
 
 
 
-    function initialize(justo) {
+
+
+
+
+
+    function initialize(justo, config) {
       var log = require("justo-logger");
       var rep = require("justo-reporter");
 
 
       loggers = new log.Loggers();
-      loggers.add(new log.logger.ColoredConsoleLogger());
+      loggers.add(new log.logger.ColoredConsoleLogger(config.runner.logger));
 
       reporters = new rep.Reporters();
       reporters.add(new rep.reporter.ColoredConsoleReporter());
@@ -71,4 +76,4 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
         reporters.end();} finally 
       {
         _Publisher2["default"].unpublish(tester);
-        _Publisher2["default"].publish(automator);}} }]);return Runner;})();exports["default"] = Runner;module.exports = exports["default"];
+        _Publisher2["default"].publish(automator);}} }, { key: "loggers", get: function get() {return loggers;} }]);return Runner;})();exports["default"] = Runner;module.exports = exports["default"];

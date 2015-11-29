@@ -6,9 +6,9 @@
 
 
 
-initialize;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { "default": obj };}var _Publisher = require("./Publisher");var _Publisher2 = _interopRequireDefault(_Publisher);var _Runner = require("./Runner");var _Runner2 = _interopRequireDefault(_Runner);var justo = initialize;function initialize() {
+initialize;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { "default": obj };}var _Publisher = require("./Publisher");var _Publisher2 = _interopRequireDefault(_Publisher);var _Runner = require("./Runner");var _Runner2 = _interopRequireDefault(_Runner);var justo = initialize;function initialize(config) {
   _Publisher2["default"].initialize(justo);
-  _Runner2["default"].initialize(justo);}
+  _Runner2["default"].initialize(justo, config);}
 
 
 Object.defineProperty(justo, "initialize", { value: initialize });

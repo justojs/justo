@@ -12,9 +12,19 @@ describe("Runner", function() {
   });
 
   describe("#initialize()", function() {
-    it("initialize()", function() {
-      Runner.initialize(justo);
+    it("initialize(config)", function() {
+      Runner.initialize(justo, {
+        runner: {
+          logger: {
+            minLevel: "debug",
+            maxLevel: "error"
+          }
+        }
+      });
+
       justo.must.have(["simple", "macro", "workflow"]);
+      Runner.loggers[0].minLevel.name.must.be.eq("DEBUG");
+      Runner.loggers[0].maxLevel.name.must.be.eq("ERROR");
     });
   });
 });

@@ -9,8 +9,16 @@ describe("justo", function() {
     justo.must.have(["publish", "unpublish", "run"]);
   });
 
-  it("#justo()", function() {
-    justo();
+  it("#justo(config)", function() {
+    justo({
+      runner: {
+        logger: {
+          minLevel: "debug",
+          maxLevel: "fatal"
+        }
+      }
+    });
+
     justo.must.have(["simple", "macro", "workflow"]);
   });
 });
