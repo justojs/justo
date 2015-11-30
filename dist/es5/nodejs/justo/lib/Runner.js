@@ -48,15 +48,36 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
 
 
 
-    function run(work, params) {
+
+
+
+
+
+
+
+
+    function run(work, aux) {
+      reporters.start(work.name);
+
+      if (work.isMacroWork()) Runner.runMacroWork(work, aux);else 
       if (work.isTesterWork()) Runner.runTesterWork(work);else 
-      Runner.runAutomatorWork(work, params);} }, { key: "runAutomatorWork", value: 
+      Runner.runAutomatorWork(work, aux);
+
+      reporters.end();} }, { key: "runMacroWork", value: 
+
+
+    function runMacroWork(work, works) {
+      for (var i = 0; i < works.length; ++i) {
+        var w = works[i];
+
+        if (w.isAutomatorWork()) Runner.runAutomatorWork(w, work.calls[i].params);else 
+        if (w.isTesterWork()) Runner.runTesterWork(w);else 
+        throw new Error("Right now, a macro works can't reference another macro work.");}} }, { key: "runAutomatorWork", value: 
+
 
 
     function runAutomatorWork(work, params) {
-      reporters.start(work.name);
-      work.task.apply(work, [work.name].concat(_toConsumableArray(params)));
-      reporters.end();} }, { key: "runTesterWork", value: 
+      work.task.apply(work, [work.name].concat(_toConsumableArray(params)));} }, { key: "runTesterWork", value: 
 
 
     function runTesterWork(work) {var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
@@ -75,9 +96,9 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
 
 
       try {
-        reporters.start(work.name);var _iteratorNormalCompletion3 = true;var _didIteratorError3 = false;var _iteratorError3 = undefined;try {
-          for (var _iterator3 = work.src[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {var file = _step3.value;require(_path2["default"].join(process.cwd(), file));}} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3["return"]) {_iterator3["return"]();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}
-        reporters.end();} finally 
+        tester.workflow(work.name, function () {var _iteratorNormalCompletion3 = true;var _didIteratorError3 = false;var _iteratorError3 = undefined;try {
+            for (var _iterator3 = work.src[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {var file = _step3.value;require(_path2["default"].join(process.cwd(), file));}} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3["return"]) {_iterator3["return"]();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}})(
+        work.name);} finally 
       {
         _Publisher2["default"].unpublish(tester);
         _Publisher2["default"].publish(automator);}} }, { key: "loggers", get: function get() {return loggers;} }]);return Runner;})();exports["default"] = Runner;module.exports = exports["default"];
