@@ -70,9 +70,13 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
       if (!tester) tester = new _justoTester.Tester({ loggers: loggers, reporters: reporters });
       _Publisher2["default"].publish(tester);
 
+      if (work.require) {var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+          for (var _iterator2 = work.require[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var pkg = _step2.value;require(pkg);}} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2["return"]) {_iterator2["return"]();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}}
+
+
       try {
-        reporters.start(work.name);var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
-          for (var _iterator2 = work.src[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var file = _step2.value;require(_path2["default"].join(process.cwd(), file));}} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2["return"]) {_iterator2["return"]();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
+        reporters.start(work.name);var _iteratorNormalCompletion3 = true;var _didIteratorError3 = false;var _iteratorError3 = undefined;try {
+          for (var _iterator3 = work.src[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {var file = _step3.value;require(_path2["default"].join(process.cwd(), file));}} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3["return"]) {_iterator3["return"]();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}
         reporters.end();} finally 
       {
         _Publisher2["default"].unpublish(tester);
