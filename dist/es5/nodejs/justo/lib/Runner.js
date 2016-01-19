@@ -8,7 +8,7 @@
 "./Publisher");var _Publisher2 = _interopRequireDefault(_Publisher);
 
 
-var loggers, reporters, automator, tester;var 
+var loggers, reporters, automator, tester, only;var 
 
 
 
@@ -34,6 +34,8 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
 
       reporters = new rep.Reporters();
       reporters.add(new rep.reporter.ColoredConsoleReporter());
+
+      only = !!config.only;
 
 
       automator = new _justoAutomator.Automator({ loggers: loggers, reporters: reporters });
@@ -87,7 +89,7 @@ Runner = (function () {function Runner() {_classCallCheck(this, Runner);}_create
 
 
 
-      if (!tester) tester = new _justoTester.Tester({ loggers: loggers, reporters: reporters });
+      if (!tester) tester = new _justoTester.Tester({ loggers: loggers, reporters: reporters, only: only });
       _Publisher2["default"].publish(tester);
 
       if (work.require) {var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
