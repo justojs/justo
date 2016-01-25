@@ -6,7 +6,7 @@ const justo = require("../../../dist/es5/nodejs/justo");
 describe("justo", function() {
   it("members", function() {
     justo.must.be.instanceOf(Function);
-    justo.must.have(["publish", "unpublish", "run"]);
+    justo.must.have(["initialize"]);
   });
 
   it("#justo(config)", function() {

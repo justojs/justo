@@ -1,6 +1,6 @@
 {
   "name": "justo",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
@@ -29,17 +29,17 @@
     "url": "https://github.com/justojs/justo.git"
   },
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
   },
   "dependencies": {
-    "justo-automator": "*",
     "justo-fs": "*",
     "justo-injector": "*",
+    "justo-loader": "*",
     "justo-logger": "*",
     "justo-reporter": "*",
     "justo-result": "*",
-    "justo-runner": "*",
-    "justo-tester": "*"
+    "justo-runner": "*"
   },
   "peerDependencies": {},
   "devDependencies": {

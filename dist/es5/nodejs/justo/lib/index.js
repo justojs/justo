@@ -2,16 +2,29 @@
 
 
 
-
-
-
-
-initialize;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { "default": obj };}var _Publisher = require("./Publisher");var _Publisher2 = _interopRequireDefault(_Publisher);var _Runner = require("./Runner");var _Runner2 = _interopRequireDefault(_Runner);var justo = initialize;function initialize(config) {
-  _Publisher2["default"].initialize(justo);
-  _Runner2["default"].initialize(justo, config);}
+initialize;var justo = initialize;function initialize(justojson) {
+  init(justojson);}
 
 
 Object.defineProperty(justo, "initialize", { value: initialize });
-Object.defineProperty(justo, "publish", { value: function value(obj) {_Publisher2["default"].publish(obj);} });
-Object.defineProperty(justo, "unpublish", { value: function value(obj) {_Publisher2["default"].unpublish(obj);} });
-Object.defineProperty(justo, "run", { value: function value(work, params) {_Runner2["default"].run(work, params);} });module.exports = exports["default"];
+
+
+
+
+function init(config) {
+  var log = require("justo-logger");
+  var rep = require("justo-reporter");
+  var Runner = require("justo-runner").Runner;
+  var loggers, reporters, runner;
+
+
+  loggers = new log.Loggers();
+  loggers.add(new log.logger.ColoredConsoleLogger(config.runner.logger));
+
+  reporters = new rep.Reporters();
+  reporters.add(new rep.reporter.ColoredConsoleReporter());
+
+
+  runner = new Runner({ loggers: loggers, reporters: reporters, only: !!config.runner.only });
+  Object.defineProperty(justo, "runner", { value: runner });
+  runner.publishInto(justo);}module.exports = exports["default"];
