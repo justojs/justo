@@ -1,8 +1,13 @@
-"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports["default"] = 
+"use strict";
+var justo = initialize;
+
+
+module.exports = initialize;
 
 
 
-initialize;var justo = initialize;function initialize(justojson) {
+
+function initialize(justojson) {
   init(justojson);}
 
 
@@ -27,4 +32,4 @@ function init(config) {
 
   runner = new Runner({ loggers: loggers, reporters: reporters, only: !!config.runner.only });
   Object.defineProperty(justo, "runner", { value: runner });
-  runner.publishInto(justo);}module.exports = exports["default"];
+  runner.publishInto(justo);}

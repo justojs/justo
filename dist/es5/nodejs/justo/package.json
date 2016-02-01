@@ -1,17 +1,17 @@
 {
   "name": "justo",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
-    "name": "The Justo.js Development Group",
-    "email": "justojs.org@outlook.com",
+    "name": "Justo Labs",
+    "email": "justojs@justolabs.com",
     "url": "http://www.justojs.org"
   },
   "contributors": [
     {
       "name": "Raúl G. González",
-      "email": "raulggonzalezsw@outlook.com",
+      "email": "raulggonzalez@justojs.org",
       "url": ""
     }
   ],
@@ -22,7 +22,7 @@
   ],
   "bugs": {
     "url": "https://github.com/justojs/justo/issues",
-    "email": "justojs.org@outlook.com"
+    "email": "issues@justojs.org"
   },
   "repository": {
     "type": "git",
@@ -43,8 +43,9 @@
   },
   "peerDependencies": {},
   "devDependencies": {
+    "babel-preset-es2015": "*",
     "grunt": "^0.4.5",
-    "grunt-babel": "^5",
+    "grunt-babel": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-jshint": "*",
@@ -55,13 +56,11 @@
     "mocha": "*"
   },
   "preferGlobal": false,
-  "main": "lib/index.js",
+  "main": "index.js",
   "files": [
-    "lib",
-    "test"
+    "lib"
   ],
   "scripts": {
     "test": "grunt test"
-  },
-  "license": "MIT"
+  }
 }

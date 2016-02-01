@@ -2,7 +2,12 @@
 const justo = initialize;
 
 //api
-export default function initialize(justojson) {
+module.exports = initialize;
+
+/**
+ * Initializes the package.
+ */
+function initialize(justojson) {
   init(justojson);
 }
 

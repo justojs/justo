@@ -1,6 +1,6 @@
 //imports
 const spy = require("justo-spy");
-const justo = require("../../../dist/es5/nodejs/justo");
+const justo = require("../../dist/es5/nodejs/justo");
 
 //suite
 describe("justo", function() {
@@ -19,6 +19,6 @@ describe("justo", function() {
       }
     });
 
-    justo.must.have(["simple", "macro", "workflow"]);
+    justo.must.have(["simple", "macro", "workflow", "init", "fin", "suite", "test"]);
   });
 });
