@@ -28,6 +28,7 @@ function init(config) {
 
   reporters = new rep.Reporters();
   reporters.add(new rep.reporter.ColoredConsoleReporter());
+  reporters.add(new rep.reporter.StateReporter("state"));
 
   //(2) create default automator
   runner = new Runner({loggers, reporters, only: !!config.runner.only});

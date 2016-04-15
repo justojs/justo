@@ -28,6 +28,7 @@ function init(config) {
 
   reporters = new rep.Reporters();
   reporters.add(new rep.reporter.ColoredConsoleReporter());
+  reporters.add(new rep.reporter.StateReporter("state"));
 
 
   runner = new Runner({ loggers: loggers, reporters: reporters, only: !!config.runner.only });

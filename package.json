@@ -1,6 +1,6 @@
 {
   "name": "justo",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
@@ -29,7 +29,7 @@
     "url": "https://github.com/justojs/justo.git"
   },
   "engines": {
-    "node": ">= 4.0.0",
+    "node": ">= 5.0.0",
     "npm": ">= 3.0.0"
   },
   "dependencies": {
@@ -44,7 +44,7 @@
   "peerDependencies": {},
   "devDependencies": {
     "babel-preset-es2015": "*",
-    "grunt": "^0.4.5",
+    "grunt": "*",
     "grunt-babel": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-copy": "*",
