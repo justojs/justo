@@ -1,11 +1,11 @@
 {
   "name": "justo",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
     "name": "Justo Labs",
-    "email": "justojs@justolabs.com",
+    "email": "info@justolabs.com",
     "url": "http://www.justojs.org"
   },
   "contributors": [

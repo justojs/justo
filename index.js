@@ -27,7 +27,9 @@ function init(config) {
   loggers.add(new log.logger.ColoredConsoleLogger(config.runner.logger));
 
   reporters = new rep.Reporters();
-  reporters.add(new rep.reporter.ColoredConsoleReporter());
+  if (!config.reporter) reporters.add(new rep.reporter.ColoredConsoleReporter(config.reporter));
+  else if (config.reporter.type == "console") reporters.add(new rep.reporter.ConsoleReporter(config.reporter.console));
+  else reporters.add(new rep.reporter.ColoredConsoleReporter(config.reporter.coloredConsole));
   reporters.add(new rep.reporter.StateReporter("state"));
 
   //(2) create default automator
