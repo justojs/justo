@@ -1,6 +1,6 @@
 {
   "name": "justo",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
@@ -33,6 +33,7 @@
     "npm": ">= 3.0.0"
   },
   "dependencies": {
+    "justo-console": "*",
     "justo-fs": "*",
     "justo-injector": "*",
     "justo-loader": "*",
