@@ -1,6 +1,6 @@
 {
   "name": "justo",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "The Justo.js interface.",
   "homepage": "http://www.justojs.org",
   "author": {
@@ -37,7 +37,6 @@
     "justo-fs": "*",
     "justo-injector": "*",
     "justo-loader": "*",
-    "justo-logger": "*",
     "justo-reporter": "*",
     "justo-result": "*",
     "justo-runner": "*"

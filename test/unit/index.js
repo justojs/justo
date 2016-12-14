@@ -11,14 +11,9 @@ describe("justo", function() {
 
   it("#justo(config)", function() {
     justo({
-      runner: {
-        logger: {
-          minLevel: "debug",
-          maxLevel: "fatal"
-        }
-      }
+      runner: {}
     });
 
-    justo.must.have(["simple", "macro", "workflow", "init", "fin", "suite", "test"]);
+    justo.must.have(["simple", "macro", "workflow", "init", "fin", "suite", "test", "catalog"]);
   });
 });
