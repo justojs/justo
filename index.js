@@ -32,7 +32,7 @@ function init(config) {
   reporters.add(new rep.reporter.StateReporter("state"));
 
   //(2) create default automator
-  runner = new Runner({reporters, console, only: !!config.runner.only});
+  runner = new Runner({reporters, console, only: !!config.runner.only, onError: config.runner.onError});
   Object.defineProperty(justo, "runner", {value: runner});
   runner.publishInto(justo);
 }
